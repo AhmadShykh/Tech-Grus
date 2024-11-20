@@ -1,3 +1,7 @@
+@import url('https://fonts.cdnfonts.com/css/nulshock');
+@import url('https://fonts.googleapis.com/css2?family=Anek+Gurmukhi:wght@100..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.cdnfonts.com/css/coolvetica-2');
+
 body {
   margin: 0;
   background-color:#020519;
@@ -6,9 +10,65 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@font-face {
+  font-family: 'Spy Agency';
+  src: url('./assets/fonts/spyagency.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Frizon';
+  src: url('./assets/fonts/Frizon.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --spy-agency-font: 'Spy Agency', sans-serif;
+  --inter-font: 'Inter', sans-serif;
+  --frizon-font: 'Frizon', sans-serif;
+  --nulshock-font: 'Nulshock', sans-serif;
+  --anek-gurmukhi-font: "Anek Gurmukhi", sans-serif;
+  --coolvetica-font: 'Coolvetica', sans-serif;
+
+  --content-container: 720px;
+}
+
+.font-spy-agency{
+  font-family: var(--spy-agency-font);
+}
+
+.font-inter{
+  font-family: var(--inter-font);
+}
+
+.font-frizon{
+  font-family: var(--frizon-font);
+}
+
+.font-nulshock{
+  font-family: var(--nulshock-font);
+}
+
+.font-anek-gurmukhi
+{
+  font-family: var(--anek-gurmukhi-font);
+  font-optical-sizing: auto;
+  font-weight: normal;
+  font-style: normal;
+  font-variation-settings:
+  "wdth" 100;
+}
+
+.font-coolvetica{
+  font-family: var(--coolvetica-font);
 }

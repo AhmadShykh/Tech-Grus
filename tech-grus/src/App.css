@@ -42,3 +42,13 @@
     transform: rotate(360deg);
   }
 }
+
+
+.bold-span-text{
+  font-size:26px;
+  font-weight: 700;
+  font-family: var(--anek-gurmukhi-font);
+
+}
+
+
