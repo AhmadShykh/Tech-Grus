@@ -1,350 +1,140 @@
+import React, { useState } from 'react';
+
+import {PricingCard} from "../Components/PricingCard";
+import {RoundedButton} from "../Components/RoundedButton";
+
 export const PricingCards = () => {
+
+    // State to track the active section (0 for first, 1 for second, 2 for third)
+    const [activeSection, setActiveSection] = useState(0);
+
+    // Array of section data (for simplicity, using just a length of 3 sections)
+    const sections = [
+        <div className="justify-start items-center gap-[54px] inline-flex">
+            <PricingCard />
+            <PricingCard />
+            <PricingCard isHighlighted={true} height="700px" />
+        </div>,
+        <div className="justify-start items-center gap-[54px] inline-flex">
+            <PricingCard />
+            <PricingCard isHighlighted={true} height="700px"/>
+            <PricingCard  />
+        </div>,
+        <div className="justify-start items-center gap-[54px] inline-flex">
+            <PricingCard isHighlighted={true} height="700px"/>
+            <PricingCard />
+            <PricingCard  />
+        </div>
+    ];
+
     return (
         <>
-            <div className="w-[1268.10px] h-[813.90px] relative">
-                <div
-                    className="w-[329px] p-[3px] left-[454px] top-0 absolute rounded-2xl justify-start items-center gap-[5px] inline-flex">
-                    <div className="px-[30px] py-[21px] bg-white rounded-2xl justify-center items-center gap-2.5 flex">
-                        <div
-                            className="w-[82px] h-5 text-center text-black text-2xl font-medium font-['Anek Gurmukhi']">Website
-                        </div>
+            <div className="my-20 w-full relative justify-center flex-col items-center flex">
+                <div className="w-full flex justify-center items-center relative">
+
+                    <div
+                        className="p-[3px] justify-center w-[22.03%] rounded-2xl flex flex-wrap items-center gap-[5px] inline-flex">
+                        <RoundedButton width="auto" text="Website"  isSelected={activeSection === 0 }  onClick={() => setActiveSection(0)}/>
+                        <RoundedButton width="auto" text="Mobile App"  isSelected={activeSection === 1 }
+                                       onClick={() => setActiveSection(1)}/>
+                        <RoundedButton text="Website & Mobile App"  isSelected={activeSection === 2 }  width="100%"
+                                       onClick={() => setActiveSection(2)}/>
                     </div>
                     <div
-                        className="grow shrink basis-0 h-[62px] px-[30px] py-[21px] bg-white/5 rounded-2xl justify-center items-center gap-2.5 flex">
+                        className="absolute right-6 -bottom-2 flex-col justify-start items-start gap-[5px] flex">
                         <div
-                            className="w-56 h-5 text-center text-white text-2xl font-medium font-['Anek Gurmukhi']">Website
-                            & Mobile App
+                            className="  items-center gap-[11px] inline-flex">
+                            <h2 className="text-white text-xl font-bold font-inter">One Time Payment
+                            </h2>
+                            <div className="">
+                                <div
+                                    className="w-[61.60px] h-[30.80px]  bg-[#3773bb]/25 rounded-[68.20px] justify-end items-center  flex">
+                                    <div className="w-[26.40px] h-[26.40px] relative bg-white rounded-[49.50px]"/>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                    <div
-                        className="px-[30px] py-[21px] bg-white/5 rounded-2xl justify-center items-center gap-2.5 flex">
-                        <div
-                            className="w-[116px] h-5 text-center text-white text-2xl font-medium font-['Anek Gurmukhi']">Mobile
-                            App
+                        <div className="text-white/50 text-base font-normal font-['Anek Gurmukhi'] leading-none">Contact
+                            us
+                            for other<br/>payment plans/segmentation.
                         </div>
                     </div>
                 </div>
-                <div className="left-0 top-[182px] absolute justify-start items-center gap-[54px] inline-flex">
+                <div className="mt-10 carousel-sections-container">
                     <div
-                        className="px-[22px] py-[50px] bg-white/0 rounded-[17.60px] border border-white/25 justify-start items-center gap-2.5 flex">
-                        <div className="w-[332.20px] flex-col justify-start items-start gap-[22px] inline-flex">
-                            <div
-                                className="self-stretch h-[245.40px] flex-col justify-start items-start gap-[19.80px] flex">
-                                <div
-                                    className="self-stretch h-[109.80px] flex-col justify-start items-start gap-[19.80px] flex">
-                                    <div className="self-stretch justify-between items-center inline-flex">
-                                        <div
-                                            className="text-white text-[22px] font-bold font-['Anek Gurmukhi']">Bronze
-                                        </div>
-                                        <div
-                                            className="text-center text-white/50 text-base font-light font-['Anek Gurmukhi']">View
-                                            Maintenance Plans
-                                        </div>
-                                    </div>
-                                    <div className="justify-center items-end inline-flex">
-                                        <div className="text-white text-[52.80px] font-bold font-['Inter']">235</div>
-                                        <div className="text-white text-lg font-bold font-['Inter']">(GBP)</div>
-                                    </div>
-                                </div>
-                                <div
-                                    className="w-[325.60px] text-white/50 text-base font-normal font-['Anek Gurmukhi'] leading-normal">This
-                                    basic plan is a starting stone for businesses that have limited budgets.
-                                </div>
-                                <div
-                                    className="self-stretch px-[88px] py-[11px] bg-white/10 rounded-md shadow justify-center items-center gap-[11px] inline-flex">
-                                    <div
-                                        className="text-center text-white text-lg font-medium font-['Inter'] leading-relaxed">Discuss
-                                        This Plan
-                                    </div>
-                                </div>
+                        className="carousel-sections"
+                        style={{
+                            transform: `translateX(-${activeSection * 100}%)`, // This controls the slide movement
+                            transition: 'transform 0.3s ease-in-out', // Smooth transition for sliding
+                        }}
+                    >
+                        {sections.map((section, index) => (
+                            <div key={index} className="carousel-section">
+                                {section}
                             </div>
-                            <div className="flex-col justify-start items-start gap-[22px] flex">
-                                <div className="justify-start items-center gap-[13.20px] inline-flex">
-                                    <div
-                                        className="w-[95px] h-3 text-white text-base font-bold font-['Anek Gurmukhi']">Plan
-                                        Includes:
-                                    </div>
-                                </div>
-                                <div className="flex-col justify-start items-start gap-[9.90px] flex">
-                                    <div className="self-stretch justify-start items-center gap-[13.20px] inline-flex">
-                                        <div
-                                            className="w-[14.30px] h-[14.30px] relative bg-[#222222] rounded-[108.90px]"/>
-                                        <div className="text-white text-base font-normal font-['Anek Gurmukhi']">1
-                                            Pages
-                                        </div>
-                                    </div>
-                                    <div className="self-stretch justify-start items-center gap-[13.20px] inline-flex">
-                                        <div
-                                            className="w-[14.30px] h-[14.30px] relative bg-[#222222] rounded-[108.90px]"/>
-                                        <div className="text-white text-base font-normal font-['Anek Gurmukhi']">Online
-                                            Ordering
-                                        </div>
-                                    </div>
-                                    <div className="self-stretch justify-start items-center gap-[13.20px] inline-flex">
-                                        <div
-                                            className="w-[14.30px] h-[14.30px] relative bg-[#222222] rounded-[108.90px]"/>
-                                        <div className="text-white text-base font-normal font-['Anek Gurmukhi']">Loyalty
-                                            System
-                                        </div>
-                                    </div>
-                                    <div className="self-stretch justify-start items-center gap-[13.20px] inline-flex">
-                                        <div
-                                            className="w-[14.30px] h-[14.30px] relative bg-[#222222] rounded-[108.90px]"/>
-                                        <div className="text-white text-base font-normal font-['Anek Gurmukhi']">Web
-                                            View App
-                                        </div>
-                                    </div>
-                                    <div className="self-stretch justify-start items-center gap-[13.20px] inline-flex">
-                                        <div
-                                            className="w-[14.30px] h-[14.30px] relative bg-[#222222] rounded-[108.90px]"/>
-                                        <div className="text-white text-base font-normal font-['Anek Gurmukhi']">Basic
-                                            Design
-                                        </div>
-                                    </div>
-                                    <div className="self-stretch justify-start items-center gap-[13.20px] inline-flex">
-                                        <div
-                                            className="w-[14.30px] h-[14.30px] relative bg-[#222222] rounded-[108.90px]"/>
-                                        <div className="text-white text-base font-normal font-['Anek Gurmukhi']">Basic
-                                            Contact/Input Forms
-                                        </div>
-                                    </div>
-                                    <div className="self-stretch justify-start items-center gap-[13.20px] inline-flex">
-                                        <div
-                                            className="w-[14.30px] h-[14.30px] relative bg-[#222222] rounded-[108.90px]"/>
-                                        <div className="text-white text-base font-normal font-['Anek Gurmukhi']">Google
-                                            Web Traffic Analysis
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        ))}
                     </div>
-                    <div
-                        className="px-[22px] py-[50.60px] bg-white/5 rounded-[17.60px] border border-white/25 justify-start items-center gap-[11px] flex">
-                        <div className="w-[332.20px] flex-col justify-start items-start gap-[22px] inline-flex">
-                            <div
-                                className="self-stretch h-[245.40px] flex-col justify-start items-start gap-[19.80px] flex">
-                                <div
-                                    className="self-stretch h-[109.80px] flex-col justify-start items-start gap-[19.80px] flex">
-                                    <div className="self-stretch justify-between items-center inline-flex">
-                                        <div
-                                            className="text-white text-[22px] font-bold font-['Anek Gurmukhi']">Silver
-                                        </div>
-                                        <div
-                                            className="text-center text-white/50 text-base font-light font-['Anek Gurmukhi']">View
-                                            Maintenance Plans
-                                        </div>
-                                    </div>
-                                    <div className="justify-center items-end inline-flex">
-                                        <div className="text-white text-[52.80px] font-bold font-['Inter']">525</div>
-                                        <div className="text-white text-lg font-bold font-['Inter']">(GBP)</div>
-                                    </div>
-                                </div>
-                                <div
-                                    className="w-[325.60px] text-white/50 text-base font-normal font-['Anek Gurmukhi'] leading-normal">This
-                                    standard plan is a great choice for starting businesses.
-                                </div>
-                                <div
-                                    className="self-stretch px-[88px] py-[11px] bg-white/10 rounded-md shadow justify-center items-center gap-[11px] inline-flex">
+                </div>
+                {/*<div className="mt-20 justify-start items-center gap-[54px] inline-flex">*/}
+                {/*    <div className="justify-start items-center gap-[54px] inline-flex">*/}
+                {/*        <PricingCard/>*/}
+                {/*        <PricingCard/>*/}
+                {/*        <PricingCard isHighlighted={true} height="700px"/>*/}
+                {/*    </div>*/}
+
+                {/*</div>*/}
+                <div className="w-[54%] mt-5">
+                    <div className="flex flex-col items-center gap-6">
+                        {/* Icon Container */}
+                        <div className="flex gap-6">
+                            {[
+                                {size: "44px x 44px", url: "/images/FigmaLogo.svg"},
+                                {size: "44px x 44px", url: "/images/ClickupLogo.svg"},
+                                {size: "44px x 34px", url: "/images/GoogleDriveLogo.svg"},
+                                {size: "44px x 44px", url: "/images/WhatsappLogo.svg"},
+                            ].map(({size, url}, index) => {
+                                const [width, height] = size.split(" x ");
+                                return (
                                     <div
-                                        className="text-center text-white text-lg font-medium font-['Inter'] leading-relaxed">Discuss
-                                        This Plan
+                                        key={index}
+                                        className="w-15 p-2.5 h-15 bg-white/10 rounded-full flex justify-center items-center"
+                                    >
+                                        <img
+                                            src={url}
+                                            alt={`Icon ${index + 1}`}
+                                            className="relative"
+                                            style={{width, height}}
+                                        />
                                     </div>
-                                </div>
-                            </div>
-                            <div className="flex-col justify-start items-start gap-[22px] flex">
-                                <div className="justify-start items-center gap-[13.20px] inline-flex">
-                                    <div
-                                        className="w-[95px] h-3 text-white text-base font-bold font-['Anek Gurmukhi']">Plan
-                                        Includes:
-                                    </div>
-                                </div>
-                                <div className="flex-col justify-start items-start gap-[9.90px] flex">
-                                    <div className="self-stretch justify-start items-center gap-[13.20px] inline-flex">
-                                        <div
-                                            className="w-[14.30px] h-[14.30px] relative bg-[#222222] rounded-[108.90px]"/>
-                                        <div
-                                            className="w-[99px] text-white text-base font-normal font-['Anek Gurmukhi']">Upto
-                                            5 Pages
-                                        </div>
-                                    </div>
-                                    <div className="self-stretch justify-start items-center gap-[13.20px] inline-flex">
-                                        <div
-                                            className="w-[14.30px] h-[14.30px] relative bg-[#222222] rounded-[108.90px]"/>
-                                        <div
-                                            className="w-[114px] text-white text-base font-normal font-['Anek Gurmukhi']">Online
-                                            Ordering
-                                        </div>
-                                    </div>
-                                    <div className="self-stretch justify-start items-center gap-[13.20px] inline-flex">
-                                        <div
-                                            className="w-[14.30px] h-[14.30px] relative bg-[#222222] rounded-[108.90px]"/>
-                                        <div
-                                            className="w-[111px] text-white text-base font-normal font-['Anek Gurmukhi']">Loyalty
-                                            System
-                                        </div>
-                                    </div>
-                                    <div className="self-stretch justify-start items-center gap-[13.20px] inline-flex">
-                                        <div
-                                            className="w-[14.30px] h-[14.30px] relative bg-[#222222] rounded-[108.90px]"/>
-                                        <div
-                                            className="w-[106px] text-white text-base font-normal font-['Anek Gurmukhi']">Web
-                                            View App
-                                        </div>
-                                    </div>
-                                    <div className="self-stretch justify-start items-center gap-[13.20px] inline-flex">
-                                        <div
-                                            className="w-[14.30px] h-[14.30px] relative bg-[#222222] rounded-[108.90px]"/>
-                                        <div
-                                            className="w-[121px] text-white text-base font-normal font-['Anek Gurmukhi']">Standard
-                                            Design
-                                        </div>
-                                    </div>
-                                    <div className="self-stretch justify-start items-center gap-[13.20px] inline-flex">
-                                        <div
-                                            className="w-[14.30px] h-[14.30px] relative bg-[#222222] rounded-[108.90px]"/>
-                                        <div
-                                            className="w-[193px] text-white text-base font-normal font-['Anek Gurmukhi']">Basic
-                                            Contact/Input Forms
-                                        </div>
-                                    </div>
-                                    <div className="self-stretch justify-start items-center gap-[13.20px] inline-flex">
-                                        <div
-                                            className="w-[14.30px] h-[14.30px] relative bg-[#222222] rounded-[108.90px]"/>
-                                        <div
-                                            className="w-[205px] text-white text-base font-normal font-['Anek Gurmukhi']">Google
-                                            Web Traffic Analysis
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+                                );
+                            })}
                         </div>
-                    </div>
-                    <div
-                        className="px-[22px] py-[50.60px] bg-gradient-to-b from-white to-white rounded-[17.60px] border border-white/25 justify-start items-center gap-[11px] flex">
-                        <div className="w-[332.20px] flex-col justify-start items-start gap-[22px] inline-flex">
-                            <div
-                                className="self-stretch h-[245.40px] flex-col justify-start items-start gap-[19.80px] flex">
-                                <div
-                                    className="self-stretch h-[109.80px] flex-col justify-start items-start gap-[19.80px] flex">
-                                    <div className="self-stretch justify-between items-center inline-flex">
-                                        <div className="text-white text-[22px] font-bold font-['Anek Gurmukhi']">Gold
-                                        </div>
-                                        <div
-                                            className="text-center text-white/50 text-base font-light font-['Anek Gurmukhi']">View
-                                            Maintenance Plans
-                                        </div>
-                                    </div>
-                                    <div className="justify-center items-end inline-flex">
-                                        <div className="text-white text-[52.80px] font-bold font-['Inter']">825</div>
-                                        <div className="text-white text-lg font-bold font-['Inter']">(GBP)</div>
-                                    </div>
-                                </div>
-                                <div
-                                    className="w-[325.60px] text-white/75 text-base font-normal font-['Anek Gurmukhi'] leading-normal">The
-                                    perfect plan for businesses that want to unleash their full potential.
-                                </div>
-                                <div
-                                    className="self-stretch px-[88px] py-[11px] bg-white/10 rounded-md shadow justify-center items-center gap-[11px] inline-flex">
-                                    <div
-                                        className="text-center text-white text-lg font-medium font-['Inter'] leading-relaxed">Discuss
-                                        This Plan
-                                    </div>
-                                </div>
-                            </div>
-                            <div className="flex-col justify-start items-start gap-[22px] flex">
-                                <div className="justify-start items-center gap-[13.20px] inline-flex">
-                                    <div
-                                        className="w-[121px] h-3 text-white text-base font-bold font-['Anek Gurmukhi']">Plan
-                                        Includes:
-                                    </div>
-                                </div>
-                                <div className="flex-col justify-start items-start gap-[9.90px] flex">
-                                    <div className="self-stretch justify-start items-center gap-[13.20px] inline-flex">
-                                        <div
-                                            className="w-[14.30px] h-[14.30px] relative bg-[#222222] rounded-[108.90px]"/>
-                                        <div
-                                            className="w-[98px] text-white text-base font-normal font-['Anek Gurmukhi']">Upto
-                                            7 Pages
-                                        </div>
-                                    </div>
-                                    <div className="self-stretch justify-start items-center gap-[13.20px] inline-flex">
-                                        <div
-                                            className="w-[14.30px] h-[14.30px] relative bg-[#222222] rounded-[108.90px]"/>
-                                        <div
-                                            className="w-[114px] text-white text-base font-normal font-['Anek Gurmukhi']">Online
-                                            Ordering
-                                        </div>
-                                    </div>
-                                    <div className="self-stretch justify-start items-center gap-[13.20px] inline-flex">
-                                        <div
-                                            className="w-[14.30px] h-[14.30px] relative bg-[#222222] rounded-[108.90px]"/>
-                                        <div
-                                            className="w-[111px] text-white text-base font-normal font-['Anek Gurmukhi']">Loyalty
-                                            System
-                                        </div>
-                                    </div>
-                                    <div className="self-stretch justify-start items-center gap-[13.20px] inline-flex">
-                                        <div
-                                            className="w-[14.30px] h-[14.30px] relative bg-[#222222] rounded-[108.90px]"/>
-                                        <div
-                                            className="w-[106px] text-white text-base font-normal font-['Anek Gurmukhi']">Web
-                                            View App
-                                        </div>
-                                    </div>
-                                    <div className="self-stretch justify-start items-center gap-[13.20px] inline-flex">
-                                        <div
-                                            className="w-[14.30px] h-[14.30px] relative bg-[#222222] rounded-[108.90px]"/>
-                                        <div
-                                            className="w-32 text-white text-base font-normal font-['Anek Gurmukhi']">Advanced
-                                            Design
-                                        </div>
-                                    </div>
-                                    <div className="self-stretch justify-start items-center gap-[13.20px] inline-flex">
-                                        <div
-                                            className="w-[14.30px] h-[14.30px] relative bg-[#222222] rounded-[108.90px]"/>
-                                        <div className="w-[263px]"><span
-                                            style="text-white text-base font-normal font-['Anek Gurmukhi']">Contact Form / Reservation System <br/></span><span
-                                            style="text-white/50 text-sm font-normal font-['Anek Gurmukhi']">(With SMS/Whatsapp/Email/More)</span>
-                                        </div>
-                                    </div>
-                                    <div className="self-stretch justify-start items-center gap-[13.20px] inline-flex">
-                                        <div
-                                            className="w-[14.30px] h-[14.30px] relative bg-[#222222] rounded-[108.90px]"/>
-                                        <div
-                                            className="text-white text-base font-normal font-['Anek Gurmukhi']">Advanced
-                                            Web Traffic Analysis
-                                        </div>
-                                    </div>
-                                    <div className="self-stretch justify-start items-center gap-[13.20px] inline-flex">
-                                        <div
-                                            className="w-[14.30px] h-[14.30px] relative bg-[#222222] rounded-[108.90px]"/>
-                                        <div
-                                            className="w-[229px] text-white text-base font-normal font-['Anek Gurmukhi']">Live
-                                            Chat Support / AI Chat Bot
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+                        {/* Text Section */}
+                        <div className="text-center text-lg font-anek-gurmukhi text-white">
+                            <p>
+                                For a more customized solution and pricing,{" "}
+                                <span className="font-semibold">contact us</span>.<br/> You can pay your OTP (One Time
+                                Payment)
+                                invoices in{" "}
+                                <span className="underline">up to 4 quarters</span> depending on your preference.
+                            </p>
+                            <p className="text-white/50 mt-5">
+                                * For projects (less than 900 USD), at least 50% of the invoice should be paid before
+                                project initialization, while 900 USD+ shall be initialized after at least 25% of the
+                                invoice.
+                            </p>
                         </div>
                     </div>
                 </div>
                 <div
-                    className="h-[67.80px] left-[996px] top-[83px] absolute flex-col justify-start items-start gap-[5px] inline-flex">
-                    <div
-                        className="self-stretch pr-[16.50px] rounded-[17.60px] justify-center items-center gap-[11px] inline-flex">
-                        <div className="text-center text-white text-xl font-bold font-['Inter']">One Time Payment</div>
-                        <div className="rounded-[17.60px] justify-center items-center gap-[11px] flex">
-                            <div
-                                className="w-[61.60px] h-[30.80px] px-[3.30px] py-[4.40px] bg-[#3773bb]/25 rounded-[68.20px] justify-end items-center gap-1 flex">
-                                <div className="w-[26.40px] h-[26.40px] relative bg-white rounded-[49.50px]"/>
-                            </div>
-                        </div>
+                    className="px-[50px] mt-6 py-3 inline-flex bg-white/5 rounded-xl ">
+                    <div className="text-white  text-[22px] font-normal font-anek-gurmukhi">Explore On Going
+                        Improvement Plans
                     </div>
-                    <div className="text-white/50 text-base font-normal font-['Anek Gurmukhi'] leading-none">Contact us
-                        for other<br/>payment plans/segmentation.
-                    </div>
+                    <img src="/images/arrow-down.svg"
+                         className="ml-3.5 w-[25px] h-[25px] pt-0.5 flex-col justify-center items-center gap-2.5 inline-flex"/>
                 </div>
+
             </div>
         </>
     )

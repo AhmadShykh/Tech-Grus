@@ -22,25 +22,26 @@ function App() {
 
   return (
       <>
-          <Header/>
-          <TopSection/>
-          <Who/>
-          <Separator/>
-          <Fields/>
-          <What/>
-          <Seperator/>
-          <Price/>
-          <Seperator/>
-          <Team/>
-          <PricingCards/>
+        <Header/>
+        <TopSection/>
+        <Who/>
+        <Separator/>
+        <Fields/>
+        <What/>
+        <Seperator/>
+        <Price/>
+        <Seperator/>
+        <PricingCards/>
+      <Seperator/>
+        <Team/>
+        <Members/>
+        <Seperator/>
+
           {/*<div className="w-[1144px] h-[923px] justify-center items-center gap-5 inline-flex">*/}
           {/*    <FieldCard/>*/}
           {/*    <FieldCard/>*/}
           {/*    <Shoots/>*/}
           {/*</div>*/}
-          <Members/>
-          <Seperator/>
-
 
       </>
 

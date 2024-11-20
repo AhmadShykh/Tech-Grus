@@ -1,0 +1,26 @@
+.card-gradient{
+    background: linear-gradient(161deg, rgba(255, 255, 255, 0.25) -0.04%, rgba(255, 255, 255, 0.02) 99.96%);
+
+}
+
+
+.carousel-container {
+    width: 100%;
+    max-width: 1200px; /* Adjust to your container width */
+    margin: 0 auto;
+}
+
+.carousel-sections-container {
+    overflow: hidden; /* Hide the sections that are not visible */
+}
+
+.carousel-sections {
+    display: flex; /* Align all sections horizontally */
+}
+
+.carousel-section {
+    min-width: 100%; /* Ensure each section takes up full width of the container */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
