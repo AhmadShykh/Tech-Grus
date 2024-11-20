@@ -131,7 +131,9 @@ export const PricingCards = () => {
                     <div className="text-white  text-[22px] font-normal font-anek-gurmukhi">Explore On Going
                         Improvement Plans
                     </div>
-                    <img src="/images/arrow-down.svg"
+                    <img
+                        alt="default text"
+                        src="/images/arrow-down.svg"
                          className="ml-3.5 w-[25px] h-[25px] pt-0.5 flex-col justify-center items-center gap-2.5 inline-flex"/>
                 </div>
 

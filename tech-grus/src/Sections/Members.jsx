@@ -54,7 +54,7 @@ export const Members = () => {
                 {/*        />*/}
                 {/*    ))}*/}
                 {/*</div>*/}
-                <img className="w-full h-auto" src="/images/Round Images.png" />
+                <img alt="default text" className="w-full h-auto" src="/images/Round Images.png" />
             </div>
             <div className="mt-16 w-full h-auto flex flex-wrap justify-center gap-6 px-4 sm:px-6 md:px-8">
                 {teamMembers.map((member, index) => (

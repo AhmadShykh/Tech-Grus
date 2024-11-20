@@ -38,7 +38,7 @@ export const Shoots = () => {
                     <div className="flex-col  gap-[15px] mt-6 flex">
                         <div
                             className="px-5 py-2 bg-[#020519] rounded-[999px] shadow border border-white/60 ">
-                            <a href="#"
+                            <a href="#top"
                                 className="text-white text-[15px] font-semibold font-inter leading-snug">
                                 Click
                                 to Explore Plans
