@@ -9,6 +9,7 @@ export const FieldCard = ({title,description,imgName,btn,width, top, left}) => {
 
                 className="md:w-[100%] lg:w-[562px] w-[562px]  overflow-clip relative h-[470px] p-10 pb-[50px] rounded-[12.80px] shadow  flex-col inline-flex">
                 <img
+                    alt="default text"
                     style={{ maxWidth: `${width}%`, height: 'auto', top: `${top}px` , left: `${left}px`}}
                     className="  absolute shadow"
                      src={`/images/${imgName}.png`}/>
@@ -38,7 +39,7 @@ export const FieldCard = ({title,description,imgName,btn,width, top, left}) => {
                                 <p className="text-white/70 text-[22px] font-normal font-anek-gurmukhi">
                                     View Our Design Portfolio
                                 </p>
-                                <img src="/images/right-arrow.svg" className="mb-2 w-5 h-auto text-white"/>
+                                <img alt="default text" src="/images/right-arrow.svg" className="mb-2 w-5 h-auto text-white"/>
                             </div>
                         )
 

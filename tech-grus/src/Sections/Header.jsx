@@ -5,7 +5,7 @@ const Header = () => {
 
       <header style={{position:'absolute', zIndex:'100000'}} className="w-full justify-between px-20 py-7 items-center inline-flex">
           <div className="text-3xl justify-start font-spy-agency items-center  flex">
-              <img src="/logo.svg"/>
+              <img alt="logo" src="/logo.svg"/>
               <div className="text-white text-4xl font-normal font-['Spy Agency'] capitalize leading-10">TechGrus</div>
           </div>
           <div

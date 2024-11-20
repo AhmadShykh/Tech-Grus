@@ -59,7 +59,7 @@ export const Members = () => {
             <div className="mt-16 w-full h-auto flex flex-wrap justify-center gap-6 px-4 sm:px-6 md:px-8">
                 {teamMembers.map((member, index) => (
                     <div key={index} className="w-full sm:w-[274px] flex-col justify-center items-center gap-6 flex">
-                        <img className="w-[200px] h-[200px] rounded-full" src={member.imgSrc} alt={member.name}/>
+                        <img  className="w-[200px] h-[200px] rounded-full" src={member.imgSrc} alt={member.name}/>
                         <div className="text-center">
                             <div
                                 className="text-white text-[28px] font-normal font-coolvetica capitalize">{member.name}</div>

@@ -1,7 +1,6 @@
 import React from 'react';
 import {SectionName} from "../Components/SectionName";
 import {JoinedButtons} from "../Components/JoinedButtons";
-import {FieldCard} from "../Components/FieldCard";
 
 const Who = () => {
     return (

@@ -9,6 +9,7 @@ export const Shoots = () => {
 
                 className="w-full items-center  overflow-clip relative h-[470px] p-10 pb-[50px] rounded-[12.80px] shadow  flex-col inline-flex">
                 <img
+                    alt="default text"
                     style={{maxWidth: `150%`, height: 'auto'}}
                     className=" -top-40 left-0 absolute shadow"
                     src="/images/image-4.png"
@@ -48,7 +49,7 @@ export const Shoots = () => {
                             <p className="text-white/70 text-[22px] font-normal font-anek-gurmukhi">
                                 View Our Design Portfolio
                             </p>
-                            <img src="/images/right-arrow.svg" className="mb-2 w-5 h-auto text-white"/>
+                            <img alt="default text" src="/images/right-arrow.svg" className="mb-2 w-5 h-auto text-white"/>
                         </div>
 
                     </div>
